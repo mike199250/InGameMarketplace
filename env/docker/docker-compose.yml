@@ -1,0 +1,17 @@
+name: ${PROJECT_NAME}
+
+services:
+  postgres:
+    extends:
+      file: ./postgres/docker-compose.yml
+      service: postgres
+    networks:
+      - default
+
+volumes:
+  pgdata: {}
+
+networks:
+  default:
+    name: ${PROJECT_NAME}-network
+    external: true

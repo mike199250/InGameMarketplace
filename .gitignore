@@ -416,3 +416,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+
+
+# ===== User-defined ignores =====
+## Ignore all actual env configs under /env
+/env/.env.*
+## But keep all example env files
+!/env/.env.*.example

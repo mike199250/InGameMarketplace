@@ -6,4 +6,4 @@ set -e
 cd "$(dirname "$0")/../docker"
 
 # Follow logs for all services
-docker compose --env-file ../.env.local logs -f
+docker compose --env-file ../env/.env.local logs -f

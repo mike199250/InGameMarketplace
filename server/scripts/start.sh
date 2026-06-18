@@ -4,7 +4,7 @@ set -e
 
 # Resolve script directory
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-ENV_FILE="$SCRIPT_DIR/../.env.local"
+ENV_FILE="$SCRIPT_DIR/../env/.env.local"
 
 # Load env variables manually
 if [[ -f "$ENV_FILE" ]]; then

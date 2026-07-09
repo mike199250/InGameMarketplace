@@ -420,7 +420,10 @@ FodyWeavers.xsd
 
 
 # ===== User-defined ignores =====
-## Ignore all actual env configs
-.env.*
-## But keep all example env files
-!.env.*.example
+## ===== Environment =====
+/server/env/.env*
+!/server/env/.env*.example
+
+## ===== Secrets =====
+/server/secrets/*
+!/server/secrets/*.example

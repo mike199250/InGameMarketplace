@@ -11,6 +11,7 @@ internal class ConfigurationConfigurator(ServerPaths serverPaths) : IHostApplica
 		LoadEnvLocalInDevelopment(builder.Environment);
 
 		builder.Configuration
+			.AddJsonFile(Path.Combine(serverPaths.ServerRoot, "configs/appsettings.shared.json"), optional: true)
 			.AddJsonFile(Path.Combine(serverPaths.ServerRoot, "secrets/secrets.json"), optional: true)
 			.AddEnvironmentVariables()
 			;

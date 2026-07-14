@@ -13,6 +13,8 @@ public static class StartupServiceCollectionExtensions
 			.AddSingleton<ServerPaths>()
 			.AddSingleton<IHostApplicationBuilderConfigurator, ConfigurationConfigurator>()
 			.AddSingleton<IHostApplicationBuilderConfigurator, LoggingConfigurator>()
+			.AddSingleton<IHostApplicationBuilderConfigurator, ExceptionHandlingConfigurator>()
+			.AddSingleton<IWebApplicationConfigurator, ExceptionHandlingConfigurator>()
 			;
 	}
 }

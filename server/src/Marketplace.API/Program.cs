@@ -1,4 +1,5 @@
 using Marketplace.Shared.Hosting;
+using Marketplace.Shared.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMarketplaceStartup();
 builder.ApplyConfigurators();
 
 var app = builder.Build();

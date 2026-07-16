@@ -4,11 +4,11 @@ services:
     image: postgres:15
     restart: unless-stopped
     ports:
-      - "${DB_PORT}:5432"
+      - "${DatabaseSettings__Port}:5432"
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASS}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DatabaseSettings__Username}
+      POSTGRES_PASSWORD: ${DatabaseSettings__Password}
+      POSTGRES_DB: ${DatabaseSettings__Database}
     volumes:
       - pgdata:/var/lib/postgresql/data
 

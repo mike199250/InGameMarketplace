@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Marketplace.Shared.Startup;
 
-public static class StartupServiceCollectionExtensions
+public static class StartupExtensions
 {
 	public static IServiceCollection AddMarketplaceStartup(this IServiceCollection services)
 	{

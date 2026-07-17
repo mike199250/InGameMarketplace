@@ -1,6 +1,9 @@
+using Marketplace.Infrastructure.Database.EFCore;
 using Marketplace.Shared.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Npgsql;
 
 namespace Marketplace.Infrastructure.Database;
@@ -14,6 +17,12 @@ internal class DatabaseConfigurator : IHostApplicationBuilderConfigurator
 			.ValidateDataAnnotations()
 			.ValidateOnStart()
 			;
+
+		builder.Services.AddDbContext<MarketplaceDbContext>((sp, options) =>
+		{
+			var settings = sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+			options.UseNpgsql(GetConnectionString(settings));
+		});
 	}
 
 	private static string GetConnectionString(DatabaseSettings settings)

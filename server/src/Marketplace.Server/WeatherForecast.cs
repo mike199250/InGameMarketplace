@@ -1,4 +1,4 @@
-namespace Marketplace.API
+namespace Marketplace.Server
 {
 	public class WeatherForecast
 	{

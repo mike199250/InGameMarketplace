@@ -1,15 +1,8 @@
 name: ${PROJECT_NAME}
 
-services:
-  postgres:
-    extends:
-      file: ./postgres/docker-compose.yml
-      service: postgres
-    networks:
-      - default
-
-volumes:
-  pgdata: {}
+include:
+  - ./postgres/docker-compose.yml
+  - ./redis/docker-compose.yml
 
 networks:
   default:

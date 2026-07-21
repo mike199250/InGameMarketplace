@@ -1,4 +1,5 @@
 using Marketplace.Infrastructure.Database;
+using Marketplace.Infrastructure.Redis;
 using Marketplace.Shared.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ public static class InfrastructureExtensions
 	{
 		return services
 			.AddSingleton<IHostApplicationBuilderConfigurator, DatabaseConfigurator>()
+			.AddSingleton<IHostApplicationBuilderConfigurator, RedisConfigurator>()
 			;
 	}
 }

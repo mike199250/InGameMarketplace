@@ -10,7 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMarketplaceStartup();
+builder.Services
+	.AddMarketplaceStartup()
+	.AddMarketplaceAuthentication()
+	;
 builder.ApplyConfigurators();
 
 var app = builder.Build();
@@ -21,8 +24,6 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-
-app.UseAuthorization();
 
 app.MapControllers();
 

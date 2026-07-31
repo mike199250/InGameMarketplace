@@ -1,6 +1,7 @@
 using Marketplace.Shared.Authentication;
 using Marketplace.Shared.Configuration;
 using Marketplace.Shared.Hosting;
+using Marketplace.Shared.Identity;
 using Marketplace.Shared.Logging;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +25,13 @@ public static class StartupExtensions
 		return services
 			.AddSingleton<IHostApplicationBuilderConfigurator, AuthenticationConfigurator>()
 			.AddSingleton<IWebApplicationConfigurator, AuthenticationConfigurator>()
+			;
+	}
+
+	public static IServiceCollection AddMarketplaceIdentity(this IServiceCollection services)
+	{
+		return services
+			.AddSingleton<IWebApplicationConfigurator, IdentityConfigurator>()
 			;
 	}
 }

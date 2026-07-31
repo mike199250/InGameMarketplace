@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services
 	.AddMarketplaceStartup()
 	.AddMarketplaceAuthentication()
+	.AddMarketplaceIdentity()
 	;
 builder.ApplyConfigurators();
 

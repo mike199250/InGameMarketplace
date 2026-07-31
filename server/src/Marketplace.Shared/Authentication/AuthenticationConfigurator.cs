@@ -14,6 +14,9 @@ internal class AuthenticationConfigurator : IHostApplicationBuilderConfigurator,
 	{
 		AddAuthentication(builder);
 		builder.Services.AddAuthorization();
+		builder.Services.AddHttpContextAccessor();
+
+		builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 	}
 
 	public void Configure(WebApplication app)

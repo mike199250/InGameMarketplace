@@ -1,7 +1,7 @@
 using Marketplace.Shared.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 
 namespace Marketplace.Infrastructure.Redis;
@@ -10,24 +10,24 @@ internal class RedisConfigurator : IHostApplicationBuilderConfigurator
 {
 	public void Configure(IHostApplicationBuilder builder)
 	{
-		builder.Services.AddOptions<RedisSettings>()
-			.BindConfiguration(nameof(RedisSettings))
-			.ValidateDataAnnotations()
-			.ValidateOnStart()
-			;
+		var settings = builder.Configuration.GetSection(nameof(RedisSettings)).Get<RedisSettings>()
+			?? throw new InvalidOperationException($"Configuration section '{nameof(RedisSettings)}' is missing or invalid.");
+		var connectionMultiplexer = Connect(settings);
 
-		builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+		builder.Services.AddSingleton(connectionMultiplexer);
+		builder.Properties[nameof(IConnectionMultiplexer)] = connectionMultiplexer;
+	}
+
+	private static IConnectionMultiplexer Connect(RedisSettings settings)
+	{
+		var config = new ConfigurationOptions
 		{
-			var settings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
-			var config = new ConfigurationOptions
-			{
-				EndPoints =
+			EndPoints =
 				{
 					$"{settings.Host}:{settings.Port}",
 				},
-				Password = settings.Password,
-			};
-			return ConnectionMultiplexer.Connect(config);
-		});
+			Password = settings.Password,
+		};
+		return ConnectionMultiplexer.Connect(config);
 	}
 }

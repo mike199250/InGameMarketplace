@@ -1,3 +1,4 @@
+using Marketplace.Infrastructure.DependencyInjection;
 using Marketplace.Shared.Hosting;
 using Marketplace.Shared.Startup;
 
@@ -14,6 +15,8 @@ builder.Services
 	.AddMarketplaceDefaults()
 	.AddMarketplaceAuthentication()
 	.AddMarketplaceIdentity()
+	.AddMarketplaceInfrastructure()
+	.AddMarketplaceDataProtection()
 	;
 builder.ApplyConfigurators();
 

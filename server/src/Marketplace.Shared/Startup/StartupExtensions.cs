@@ -9,7 +9,7 @@ namespace Marketplace.Shared.Startup;
 
 public static class StartupExtensions
 {
-	public static IServiceCollection AddMarketplaceStartup(this IServiceCollection services)
+	public static IServiceCollection AddMarketplaceDefaults(this IServiceCollection services)
 	{
 		return services
 			.AddSingleton<ServerPaths>()

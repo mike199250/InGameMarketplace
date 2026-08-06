@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Shared.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Infrastructure", "src\Marketplace.Infrastructure\Marketplace.Infrastructure.csproj", "{C334B765-9FAC-48B3-8202-FAE61B61C083}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Migrations", "src\Marketplace.Migrations\Marketplace.Migrations.csproj", "{589567C7-B5F2-4036-99EB-7F6856933016}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C334B765-9FAC-48B3-8202-FAE61B61C083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C334B765-9FAC-48B3-8202-FAE61B61C083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C334B765-9FAC-48B3-8202-FAE61B61C083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589567C7-B5F2-4036-99EB-7F6856933016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589567C7-B5F2-4036-99EB-7F6856933016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589567C7-B5F2-4036-99EB-7F6856933016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589567C7-B5F2-4036-99EB-7F6856933016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

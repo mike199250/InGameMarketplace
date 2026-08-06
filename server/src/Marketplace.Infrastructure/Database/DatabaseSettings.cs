@@ -1,6 +1,6 @@
 namespace Marketplace.Infrastructure.Database;
 
-internal record DatabaseSettings
+public record DatabaseSettings
 {
 	public required string Host { get; init; }
 

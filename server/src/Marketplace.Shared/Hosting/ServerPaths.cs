@@ -2,15 +2,19 @@ using Microsoft.Extensions.Hosting;
 
 namespace Marketplace.Shared.Hosting;
 
-internal class ServerPaths(IHostEnvironment environment)
+public class ServerPaths(string searchPath)
 {
 	private const string MarkerFile = ".server-root";
 
-	public string ServerRoot { get; } = FindServerRoot(environment);
+	public string ServerRoot { get; } = FindServerRoot(searchPath);
 
-	private static string FindServerRoot(IHostEnvironment environment)
+	public ServerPaths(IHostEnvironment environment) : this(environment.ContentRootPath)
 	{
-		var dir = new DirectoryInfo(environment.ContentRootPath);
+	}
+
+	private static string FindServerRoot(string searchPath)
+	{
+		var dir = new DirectoryInfo(searchPath);
 		while (dir != null)
 		{
 			if (File.Exists(Path.Combine(dir.FullName, MarkerFile)))

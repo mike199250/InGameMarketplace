@@ -21,19 +21,7 @@ internal class DatabaseConfigurator : IHostApplicationBuilderConfigurator
 		builder.Services.AddDbContext<MarketplaceDbContext>((sp, options) =>
 		{
 			var settings = sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
-			options.UseNpgsql(GetConnectionString(settings));
+			options.UseMarketplaceDatabase(settings);
 		});
-	}
-
-	private static string GetConnectionString(DatabaseSettings settings)
-	{
-		return new NpgsqlConnectionStringBuilder
-		{
-			Host = settings.Host,
-			Port = settings.Port,
-			Database = settings.Database,
-			Username = settings.Username,
-			Password = settings.Password,
-		}.ConnectionString;
 	}
 }

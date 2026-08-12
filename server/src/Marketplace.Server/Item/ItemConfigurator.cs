@@ -8,5 +8,8 @@ internal class ItemConfigurator : IWebApplicationConfigurator
 	{
 		app.MapGet(ItemRoutes.GetUserItems, ItemEndpointHandler.GetUserItems)
 			.RequireAuthorization();
+
+		app.MapPost(ItemRoutes.Internal.TestCreateUserItems, ItemEndpointHandler.TestCreateUserItems)
+			.RequireAuthorization();
 	}
 }

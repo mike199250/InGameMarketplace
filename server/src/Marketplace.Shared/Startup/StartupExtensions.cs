@@ -11,20 +11,22 @@ public static class StartupExtensions
 {
 	public static IServiceCollection AddMarketplaceDefaults(this IServiceCollection services)
 	{
+		var exceptionHandlingConfigurator = new ExceptionHandlingConfigurator();
 		return services
 			.AddSingleton<ServerPaths>()
 			.AddSingleton<IHostApplicationBuilderConfigurator, ConfigurationConfigurator>()
 			.AddSingleton<IHostApplicationBuilderConfigurator, LoggingConfigurator>()
-			.AddSingleton<IHostApplicationBuilderConfigurator, ExceptionHandlingConfigurator>()
-			.AddSingleton<IWebApplicationConfigurator, ExceptionHandlingConfigurator>()
+			.AddSingleton<IHostApplicationBuilderConfigurator>(exceptionHandlingConfigurator)
+			.AddSingleton<IWebApplicationConfigurator>(exceptionHandlingConfigurator)
 			;
 	}
 
 	public static IServiceCollection AddMarketplaceAuthentication(this IServiceCollection services)
 	{
+		var authenticationConfigurator = new AuthenticationConfigurator();
 		return services
-			.AddSingleton<IHostApplicationBuilderConfigurator, AuthenticationConfigurator>()
-			.AddSingleton<IWebApplicationConfigurator, AuthenticationConfigurator>()
+			.AddSingleton<IHostApplicationBuilderConfigurator>(authenticationConfigurator)
+			.AddSingleton<IWebApplicationConfigurator>(authenticationConfigurator)
 			;
 	}
 
